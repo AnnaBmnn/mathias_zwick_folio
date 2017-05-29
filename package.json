@@ -1,0 +1,23 @@
+{
+  "name": "mathias_zwick_folio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaBmnn/mathias_zwick_folio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnnaBmnn/mathias_zwick_folio/issues"
+  },
+  "homepage": "https://github.com/AnnaBmnn/mathias_zwick_folio#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-stylus": "^2.6.0"
+  }
+}
