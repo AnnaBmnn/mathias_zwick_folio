@@ -1,9 +1,10 @@
-#Mathias Zwick portfolio
-*Anna Baumann H2 P2020*
+# Mathias Zwick portfolio
+[GitHub](https://www.google.com "GitHub")
+* Anna Baumann H2 P2020*
 <Enter>
 A site in order to present Mathias Zwick's work using silex.
 
-##Requirements
+## Requirements
 + set up the database. You can find it **mathias_zwick.sql** at the root of the file
 + NodesModule
   *gulp: ^3.9.1,
@@ -14,18 +15,18 @@ A site in order to present Mathias Zwick's work using silex.
   *"symfony/twig-bridge": "^3.2",
   *"doctrine/dbal": "^2.5"
 
-##pages
+## pages
 + Home
 + About
 + Photos-set
 + Error
 
-##Features
+## Features
 + visite the pages previously quote
 + navigation with menu
 + rooting with errors
 
-##using
+## using
 + phpModels
 + block twig
 + templates twig
