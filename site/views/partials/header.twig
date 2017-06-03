@@ -1,8 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="{{global.request.basepath}}/ressources/css/main.css">
-</head>
-<body>
+{% block header %}
+<header class="header">
+	<div class="header--logo serif">
+		<a class="hover-underline" href="{{ url('home')}}">MZ</a>
+	</div>
+	<nav class="header--nav">
+		<ul>
+			<li class="header--nav--item  hover-underline sans-serif">
+				<a href="#">Menu</a>
+				<ul class="header--nav--item--hover-menu">
+					<li class="header--nav--item--hover-menu__item"><a class="hover-underline" href="{{ url('about') }}">About</a></li>
+					<li class="header--nav--item--hover-menu__item"><a class="hover-underline" href="{{ url('photos-set', {slug:'a-push-towards-the-west'}) }}">A push toward the west</a></li>
+					<li class="header--nav--item--hover-menu__item"><a class="hover-underline" href="{{ url('photos-set', {slug:'no-mans-land'}) }}">No man's land</a></li>
+					<li class="header--nav--item--hover-menu__item"><a class="hover-underline" href="{{ url('photos-set', {slug:'day-after-day'}) }}">Day after day</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</header>
+{% endblock %}

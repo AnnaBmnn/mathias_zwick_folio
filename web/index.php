@@ -1,43 +1,94 @@
 <?php 
+$config = array();
+switch($_SERVER['HTTP_HOST'])
+{
+	case 'localhost':
+	case 'localhost:8080':
+	case 'localhost:8888':
+		$config['debug'] = false;
+		$config['db_host'] = 'localhost';
+		$config['db_name'] = 'mathias_zwick';
+		$config['db_user'] = 'root';
+		$config['db_pass'] = 'root';
+		break;
+}
 
 // Require dependendies
-require_once __DIR__.'/../vendor/autoload.php';
+$loader = require_once __DIR__.'/../vendor/autoload.php';
+$loader->addPsr4('Site\\', __DIR__.'/../site/src/');
 
 // Init Silex
 $app = new Silex\Application();
-$app['debug'] = true;
+$app['config'] = $config;
+$app['debug'] = false;
 
 // Services
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../site/views',
 ));
+$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+    'db.options' => array (
+        'driver'    => 'pdo_mysql',
+        'host'      => $app['config']['db_host'],
+        'dbname'    => $app['config']['db_name'],
+        'user'      => $app['config']['db_user'],
+        'password'  => $app['config']['db_pass'],
+        'charset'   => 'utf8'
+    ),
+));
+$app['db']->setFetchMode(PDO::FETCH_OBJ);
 
 // Create routes
 $app->get('/', function() use ($app)
 {
-    return $app['twig']->render('pages/home.twig');
+	$data = array();
+	$data['title'] = 'Mathias Zwick';
+	$photosSetModel = new Site\Models\PhotosSet($app['db']);
+	$data['photosSets'] = $photosSetModel->getPhotoSetsWithPresentationPicture();
+
+    return $app['twig']->render('pages/home.twig', $data);
 })
 ->bind('home');
 
-$app->get('/pokemons', function() use ($app)
+$app->get('/about', function() use ($app)
 {
-    return $app['twig']->render('pages/pokemons.twig');
-})
-->bind('pokemons');
+	$data['title'] = 'about' ;
 
-$app->get('/pokemons/{id}', function($id) use ($app)
+    return $app['twig']->render('pages/about.twig', $data);
+})
+->bind('about');
+
+$app->get('/photos-set/{slug}', function($slug) use ($app)
 {
-    return $app['twig']->render('pages/pokemon.twig');
+	$data = array();	
+
+	$photosSetModel = new Site\Models\PhotosSet($app['db']);
+	$photosSet = $photosSetModel->getBySlug($slug);
+	$data['photosSet'] = $photosSet ;
+
+	$data['photos'] = $photosSetModel->getAllPhotosByPhotosSet($photosSet->name);
+
+	if(!$data['photos'])
+	{
+		$app->abort(404);
+	}
+    return $app['twig']->render('pages/photos-set.twig', $data);
 
 })
-->assert('id', '\d+')
-->bind('pokemon');
+->assert('id', '^[a-z0-9-]+$')
+->bind('photos-set');
 
-$app->get('/add', function() use ($app)
-{
-    return $app['twig']->render('pages/add.twig');
-})
-->bind('add');
+$app->error(function() use ($app){
+	if($app['debug']){
+		return;
+	}
+	$data = array();
+	$data['title'] = 'Error';
+	$data['h1'] = 'Oupsi';
+	$data['text'] = 'The page you were looking for doesn\'t exist';
+
+	return $app['twig']->render('pages/error.twig', $data);
+});
 
 // Run Silex
 $app->run();

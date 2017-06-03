@@ -1,6 +1,6 @@
 Options -MultiViews
 
 RewriteEngine On
-RewriteBase /T3/mathias_zwick_folio/web
+RewriteBase /T3/mathias_zwick_folio-2/web
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]

@@ -1,0 +1,17 @@
+{% extends "layout/base.twig" %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block header %}
+	{% include 'partials/header.twig' %}
+{% endblock %}
+{% block boxImage %}
+	<img src="{{ global.request.basepath }}/ressources/img/about/mathias_zwick.jpg" alt="">
+{% endblock %}
+{% block boxContent%}
+	<h1 class="box--content__title h2 serif">Mathias Zwick</h1>
+	<p class="box--content__text sans-serif">Né en 1990, Mathias Zwick se passionne pour la photographie dès l’âge de 15 ans. Après des études de droit et un premier emploi de juriste, il décide de se consacrer entièrement à la photographie, et part en Iran réaliser son premier reportage sur la jeunesse.
+	</p>
+{% endblock %}

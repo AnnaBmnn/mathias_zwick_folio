@@ -1,0 +1,30 @@
+<div id="box">
+{% block box %}
+	<div class="box full-width">
+		<div class="box--image">
+			<img src="{{ global.request.basepath }}/ressources/img/2.jpg" alt="">
+		</div>
+		<div class="box--content">
+		{% block boxContent%}
+			<h1 class="box--content--title hover-underline h1 serif"><a href="#">Mathias Ziwk</a></h1>
+			<nav class="box--content--nav">
+				<ul>
+					<li class="box--content--nav__item sans-serif">
+						<a class="hover-underline" href="{{ url('photos-set', {name:"a-push-toward-the-west"}) }}">A push towards the west</a>
+					</li>
+					<li class="box--content--nav__item sans-serif">
+						<a class="hover-underline" href="{{ url('photos-set', {name:"no-mans-land"}) }}">No man's land</a>
+					</li>
+					<li class="box--content--nav__item sans-serif">
+						<a class="hover-underline" href="{{ url('photos-set', {name:"portraits"}) }}">Portraits</a>
+					</li>
+					<li class="box--content--nav__item sans-serif">
+						<a class="hover-underline" href="{{ url('photos-set', {name:"after-day"}) }}">Day after day</a>
+					</li>
+				</ul>
+			</nav>
+		{% endblock %}
+		</div>
+	</div>
+{% endblock %}
+</div>

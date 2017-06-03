@@ -1,0 +1,57 @@
+.header
+	box-sizing border-box
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 15%
+	padding 5% 5% 0 5%
+	z-index 2
+	
+	.header--logo
+		float left
+		display inline-block
+		
+		a
+			font-size 26px
+			opacity 0.8
+
+	.header--nav
+		float right
+		
+		.header--nav--item
+			display inline-block
+			margin-left 30px
+			font-size 20px
+			font-weight 700
+			position relative
+			
+			.header--nav--item--hover-menu
+				background-color red
+				position absolute
+				right 0
+				top 100%
+				height 500px
+				width 1100px
+				background-color rgba(0, 0, 0, 0.9)
+				transform-origin 100% 0
+				transform scaleX(0) scaleY(0)
+				will-change transform
+				transition transform 0.3s ease-in
+			
+			&:hover
+				.header--nav--item--hover-menu
+					transform scaleX(1) scaleY(1)
+
+				
+					.header--nav--item--hover-menu__item
+						box-sizing border-box
+						text-align center
+						float left
+						width 50%
+						height 50%
+						font-size 30px
+						padding-top 100px
+			
+
+			

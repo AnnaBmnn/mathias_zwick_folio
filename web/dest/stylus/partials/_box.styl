@@ -1,0 +1,77 @@
+.box
+	background-color black
+	position absolute
+	top 0
+	left 0
+	overflow hidden 
+	
+
+	.box--image
+		box-sizing border-box
+		padding 15px
+		max-width 90%
+		max-height 100%
+		position absolute
+		top 50%
+		right 0%
+		transform translateY(-50%)
+		animation translate-bis 1.2s  ease-in-out	
+		
+		img
+			max-width 100%
+			max-height 100%
+			
+	.box--content
+		height auto
+		position absolute
+		left 5%
+		top 50%
+		width 40%
+		transform translateY(-50%)
+			
+		.box--content__title
+			width 100%
+			transform-origin 0 50%
+			transform translateX(-1000px)
+			will-change transform
+			animation translate 1.2s  ease-in-out reverse forwards			
+			
+		.box--content__text
+			margin-top 50px
+			width 50%
+			font-size 16px
+			line-height 1.5
+			opacity 0.7
+			transform-origin 0 50%
+			transform translateX(-1000px)
+			will-change transform
+			animation translate 1s  ease-in-out reverse forwards 0.3s
+			
+		.box--content__button	
+			transform-origin 0 50%
+			transform translateX(-1000px)
+			will-change transform
+			animation translate 1s  ease-in-out reverse forwards 0.5s
+				
+		.box--content__scroll
+			transform-origin right
+			display inline-block
+			opacity 0.9
+			font-size 22px
+			animation translate-rotate 1.5s  ease-in-out forwards 
+			
+		
+		.box--content--nav	
+			.box--content--nav__item
+				font-size 26px
+				font-weight 300
+				margin-top 10px
+				transform-origin 0 50%
+				transform translateX(-1000px)
+				will-change transform
+				
+				for num in 1 2 3 
+					&:nth-child({num})
+						animation translate 1s  ease-in-out reverse forwards
+						animation-delay num*0.2s
+											

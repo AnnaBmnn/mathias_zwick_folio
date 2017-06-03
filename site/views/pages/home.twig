@@ -1,20 +1,18 @@
-{{ include('partials/header.twig') }}
+{% extends "layout/base.twig" %}
 
-<div class="box">
-	<div class="box--image">
-		<img src="{{ global.request.basepath }}/ressources/img/2.jpg" alt="">
-	</div>
-	<div class="box--content">
-		<h1 class="h1">Mathias Ziwk</h1>
-		<nav class="box--content--nav">
-			<ul>
-				<li class="box--content--nav__item"><a href="#">A push towards the sun</a></li>
-				<li class="box--content--nav__item"><a href="#">No man's land</a></li>
-				<li class="box--content--nav__item"><a href="#">Portraits</a></li>
-				<li class="box--content--nav__item"><a href="#">Day after day</a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
+{% block title %}
+	{{title}}
+{% endblock %}
 
-{{ include('partials/footer.twig') }}
+{% block boxContent%}
+<h1 class="box--content__title h1 serif"><a class="hover-underline" href="{{ url('about') }}">Mathias Ziwck</a></h1>
+<nav class="box--content--nav">
+	<ul>
+		{% for _photoSet in photosSets %}
+		<li class="box--content--nav__item sans-serif" data-picture="{{_photoSet.picture}}">
+			<a class="hover-underline" href="{{ url('photos-set', {slug:_photoSet.slug}) }}">{{ _photoSet.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</nav>
+{% endblock %}

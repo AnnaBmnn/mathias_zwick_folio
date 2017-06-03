@@ -1,0 +1,22 @@
+{% extends "layout/base.twig" %}
+
+{% block title %}
+	{{photosSet.name}}
+{% endblock %}
+{% block boxImage %}
+	{% for _photo in photos %}
+		<img class="full-width"src="{{ global.request.basepath }}/{{_photo.picture}}" alt="">
+	{% endfor %}
+{% endblock %}
+{% block boxContent%}
+	<h1 class="box--content__title h2 serif">{{ block('title') }}</h1>
+	<p class="box--content__text sans-serif">
+		{{photosSet.description}}
+	</p>
+	<div class="box--content__scroll vertical sans-serif">
+		scroll
+	</div>
+{% endblock %}
+
+
+

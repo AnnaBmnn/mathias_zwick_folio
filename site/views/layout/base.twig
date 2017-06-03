@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <meta charset="UTF-8">
+            <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Poppins:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{global.request.basepath}}/ressources/css/main.css">
+            <title>{% block title %}Mathias Zwick{% endblock %} </title>
+        {% endblock %}
+    </head>
+    <body>
+    <div class="content">
+    {% block header %}
+        {% include 'partials/header.twig' %}
+    {% endblock %}
+    {% block content%}
+        {% if (title =='about' or title =='Mathias Zwick') %}
+            {% set classOverflow = 'overflow-hidden' %}
+        {% else %}
+            {% set classOverflow = 'overflow-scroll-x' %}
+        {% endif %}
+        <div id="box full-width {{classOverflow}}">
+        {% block box %}
+            <div class="box full-width {{classOverflow}}">
+                <div class="box--image {{classOverflow}}">
+                {% block boxImage %}
+                    <img src="{{ global.request.basepath }}/ressources/img/push_towards_the_west/pttw_10.jpg" alt="">
+                {% endblock %}
+                </div>
+                <div class="box--content">
+                {% block boxContent%}
+                {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+        </div>
+        <div class="images-container">
+        {% block imagesContainer %}
+        {% endblock %}
+        </div>
+    {% endblock %}
+    </div>
+        {% include 'partials/footer.twig' %}
+    </body>
+</html>

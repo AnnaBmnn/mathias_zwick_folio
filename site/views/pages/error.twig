@@ -1,0 +1,18 @@
+{% extends "layout/base.twig" %}
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block boxImage %}
+	<img src="{{ global.request.basepath }}/ressources/img/day_after_day/dad_4.jpg" alt="">
+{% endblock %}
+{% block boxContent%}
+	<h1 class="box--content__title h2 serif">{{h1}}</h1>
+	<p class="box--content__text sans-serif">
+		{{text}}
+	</p>
+	<div class="button  sans-serif">
+		<a href="{{url('home')}}">
+		Back to home</a>
+	</div>
+{% endblock %}
